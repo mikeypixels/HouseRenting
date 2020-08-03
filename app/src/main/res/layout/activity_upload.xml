@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Upload">
+
+    <Button
+        android:id="@+id/mButtonChooseImage"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="10dp"
+        android:drawableStart="@drawable/addimage"
+        android:drawableTint="@color/black"
+        android:fontFamily="@font/apple"
+        android:text="SELECT IMAGE TO UPLOAD"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/Dedc"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@id/mButtonChooseImage"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginRight="10dp"
+        android:autofillHints=""
+        android:background="@drawable/custom_input"
+        android:drawableStart="@drawable/fullname"
+        android:drawablePadding="13dp"
+        android:focusable="true"
+        android:fontFamily="@font/apple"
+        android:hint="House Description"
+        android:inputType="textEmailAddress"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:textColor="#0A0444"
+        android:textColorHint="#838383"
+        android:textSize="14sp" />
+
+    <LinearLayout
+        android:id="@+id/hori"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@+id/Dedc"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal">
+        <!--      This is Card Rpw Footer-->
+
+        <EditText
+            android:id="@+id/loc"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_marginRight="4dp"
+            android:layout_weight="1"
+            android:autofillHints=""
+            android:background="@drawable/custom_input"
+            android:drawableStart="@drawable/location"
+            android:drawablePadding="13dp"
+            android:fontFamily="@font/apple"
+            android:hint="Location"
+            android:focusable="false"
+            android:inputType="textEmailAddress"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textColor="#0A0444"
+            android:textColorHint="#838383"
+            android:textSize="14sp"
+            android:transitionName="edtEmail" />
+
+        <EditText
+            android:id="@+id/pricee"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_below="@+id/loc"
+            android:layout_weight="1"
+            android:autofillHints=""
+            android:background="@drawable/custom_input"
+            android:drawableStart="@drawable/price"
+            android:drawablePadding="13dp"
+            android:fontFamily="@font/apple"
+            android:hint="House price"
+            android:inputType="number"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textColor="#2B2B2B"
+            android:textColorHint="#838383"
+            android:textSize="14sp"
+            android:transitionName="edtPhone" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@+id/hori"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal">
+        <!--This is Card Rpw Footer-->
+        <EditText
+            android:id="@+id/rum"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_marginRight="4dp"
+            android:layout_weight="1"
+            android:autofillHints=""
+            android:background="@drawable/custom_input"
+            android:drawableStart="@drawable/room_drawable"
+            android:drawablePadding="13dp"
+            android:fontFamily="@font/apple"
+            android:hint="room"
+            android:inputType="number"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textColor="#0A0444"
+            android:textColorHint="#838383"
+            android:textSize="14sp"
+            android:transitionName="edtEmail" />
+
+        <EditText
+            android:id="@+id/kicheni"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_below="@+id/loc"
+            android:layout_weight="1"
+            android:autofillHints=""
+            android:layout_marginRight="4dp"
+            android:background="@drawable/custom_input"
+            android:drawableStart="@drawable/kitchen_drawable"
+            android:drawablePadding="13dp"
+            android:fontFamily="@font/apple"
+            android:hint="Kitchen"
+            android:inputType="number"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textColor="#2B2B2B"
+            android:textColorHint="#838383"
+            android:textSize="14sp"
+            android:transitionName="edtPhone" />
+
+        <EditText
+            android:id="@+id/paking"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_below="@+id/loc"
+            android:layout_weight="1"
+            android:autofillHints=""
+            android:background="@drawable/custom_input"
+            android:drawableStart="@drawable/parking_drawable"
+            android:drawablePadding="13dp"
+            android:fontFamily="@font/apple"
+            android:hint="Parking"
+            android:inputType="number"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textColor="#2B2B2B"
+            android:textColorHint="#838383"
+            android:textSize="14sp"
+            android:transitionName="edtPhone" />
+    </LinearLayout>
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/bb"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="45dp"-->
+<!--        android:layout_below="@+id/footer"-->
+<!--        android:layout_marginLeft="10dp"-->
+<!--        android:layout_marginTop="7dp"-->
+<!--        android:layout_marginRight="10dp"-->
+<!--        android:orientation="horizontal">-->
+<!--        &lt;!&ndash;This is Card Rpw Footer&ndash;&gt;-->
+<!--        <EditText-->
+<!--            android:id="@+id/bed"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="45dp"-->
+<!--            android:layout_marginRight="4dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:autofillHints=""-->
+<!--            android:background="@drawable/custom_input"-->
+<!--            android:drawableStart="@drawable/bed"-->
+<!--            android:drawablePadding="13dp"-->
+<!--            android:fontFamily="@font/apple"-->
+<!--            android:hint="Bed Room"-->
+<!--            android:inputType="number"-->
+<!--            android:paddingStart="12dp"-->
+<!--            android:paddingEnd="12dp"-->
+<!--            android:textColor="#0A0444"-->
+<!--            android:textColorHint="#838383"-->
+<!--            android:textSize="14sp"-->
+<!--            android:transitionName="edtEmail" />-->
+
+<!--        <EditText-->
+<!--            android:id="@+id/dinning"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="45dp"-->
+<!--            android:layout_below="@+id/loc"-->
+<!--            android:layout_weight="1"-->
+<!--            android:autofillHints=""-->
+<!--            android:layout_marginRight="4dp"-->
+<!--            android:background="@drawable/custom_input"-->
+<!--            android:drawableStart="@drawable/dinningg"-->
+<!--            android:drawablePadding="13dp"-->
+<!--            android:fontFamily="@font/apple"-->
+<!--            android:hint="Dinning"-->
+<!--            android:inputType="number"-->
+<!--            android:paddingStart="12dp"-->
+<!--            android:paddingEnd="12dp"-->
+<!--            android:textColor="#2B2B2B"-->
+<!--            android:textColorHint="#838383"-->
+<!--            android:textSize="14sp"-->
+<!--            android:transitionName="edtPhone" />-->
+
+<!--        <EditText-->
+<!--            android:id="@+id/living"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="45dp"-->
+<!--            android:layout_below="@+id/loc"-->
+<!--            android:layout_weight="1"-->
+<!--            android:autofillHints=""-->
+<!--            android:background="@drawable/custom_input"-->
+<!--            android:drawableStart="@drawable/sittingroom"-->
+<!--            android:drawablePadding="13dp"-->
+<!--            android:fontFamily="@font/apple"-->
+<!--            android:hint="sittingroom"-->
+<!--            android:inputType="number"-->
+<!--            android:paddingStart="12dp"-->
+<!--            android:paddingEnd="12dp"-->
+<!--            android:textColor="#2B2B2B"-->
+<!--            android:textColorHint="#838383"-->
+<!--            android:textSize="14sp"-->
+<!--            android:transitionName="edtPhone" />-->
+<!--    </LinearLayout>-->
+
+    <EditText
+        android:id="@+id/coord"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@id/footer"
+        android:layout_marginTop="7dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:autofillHints=""
+        android:background="@drawable/custom_input"
+        android:drawableStart="@drawable/coordinate"
+        android:drawablePadding="13dp"
+        android:hint="coordinates"
+        android:inputType="textEmailAddress"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:textColor="#0A0444"
+        android:textColorHint="#838383"
+        android:fontFamily="@font/apple"
+        android:textSize="14sp"
+        android:transitionName="edtEmail" />
+
+    <EditText
+        android:id="@+id/phone"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@id/coord"
+        android:layout_marginTop="7dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/custom_input"
+        android:drawableStart="@drawable/phone"
+        android:drawablePadding="13dp"
+        android:hint="Owner Phone number"
+        android:inputType="phone"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:textColor="#0A0444"
+        android:textColorHint="#838383"
+        android:fontFamily="@font/apple"
+        android:textSize="14sp"
+        android:transitionName="edtEmail" />
+
+    <TextView
+        android:id="@+id/info"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/phone"
+        android:fontFamily="@font/apple"
+        android:textColorHint="#838383"
+        android:textSize="13sp"
+        android:layout_height="wrap_content"/>
+
+<!--    <ImageView-->
+<!--        android:id="@+id/HouseImage"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="294dp"-->
+<!--        android:layout_below="@+id/info"-->
+<!--        android:layout_above="@+id/mButtonUpload"-->
+<!--        android:layout_marginTop="9dp"-->
+<!--        android:layout_marginLeft="10dp"-->
+<!--        android:layout_marginRight="10dp"-->
+<!--        android:contentDescription="TODO"-->
+<!--        android:src="@drawable/imagee"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        tools:srcCompat="@tools:sample/avatars" />-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="294dp"
+        android:layout_below="@+id/info"
+        android:orientation="vertical"
+        android:paddingBottom="10dp">
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="vertical"
+               android:gravity="center_horizontal">
+               <ImageView
+                   android:id="@+id/HouseImage"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_below="@+id/info"
+                   android:layout_above="@+id/mButtonUpload"
+                   android:layout_marginLeft="10dp"
+                   android:layout_marginRight="10dp"
+                   android:contentDescription="TODO"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintStart_toStartOf="parent" />
+               <TextView
+                   android:id="@+id/imgvname"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:textSize="12dp"/>
+           </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/slider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/mButtonUpload"
+        android:layout_width="match_parent"
+        android:fontFamily="@font/apple"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/buttons"
+        android:text="UPLOAD"
+        android:textColor="#FFF"
+        android:textSize="15sp" />
+
+</RelativeLayout>

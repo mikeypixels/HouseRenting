@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item android:title="Components">
+        <menu>
+            <item
+                android:id="@+id/home"
+                android:fontFamily="@font/apple"
+                android:icon="@drawable/home"
+                android:title="@string/menu_home" />
+            <item
+                android:id="@+id/request"
+                android:fontFamily="@font/apple"
+                android:icon="@drawable/request"
+                android:title="@string/make_request" />
+            <item
+                android:id="@+id/myorder"
+                android:fontFamily="@font/apple"
+                android:icon="@drawable/order"
+                android:title="My Orders" />
+
+
+
+        </menu>
+    </item>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/share"
+                android:icon="@drawable/sharee"
+                android:title="@string/menu_share" />
+
+            <item
+                android:id="@+id/aboutUs"
+                android:icon="@drawable/about"
+                android:title="About Us" />
+        </menu>
+    </item>
+
+</menu>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/RLayout"
+    android:layout_height="match_parent"
+    android:layout_centerHorizontal="true"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#FFFFFF"
+    android:padding="20dp"
+    tools:context=".SiginAs">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lotiie"
+        android:layout_width="281dp"
+        android:layout_height="279dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="offline.json"
+        app:lottie_loop="true" />
+
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_below="@id/lotiie"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:fontFamily="@font/apple"
+        android:text="You're Offline"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="35sp" />
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/textView2"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:fontFamily="@font/apple"
+        android:text="Please Check Your Internet Connections And Try Again!"
+        android:textAlignment="center"
+        android:textColor="#6E6E6E"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/tryAgain"
+        android:layout_width="match_parent"
+        android:layout_height="53dp"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/buttons"
+        android:fontFamily="@font/apple"
+        android:text="TRY AGAIN"
+        android:textColor="#FFFFFF" />
+
+
+</RelativeLayout>

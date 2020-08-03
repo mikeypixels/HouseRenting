@@ -1,0 +1,6 @@
+include ':mysql-connector-java-5.1.23-bin'
+include ':mysql-connector-java-3.0.17-ga-bin'
+include ':mysql-connector-java-3.0.17-ga-bin'
+include ':mysql-connector-java-3.0.17-ga-bin'
+include ':mysql-connector-java-3.0.17-ga-bin'
+include ':app'

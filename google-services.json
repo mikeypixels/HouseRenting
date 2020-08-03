@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "479952031135",
+    "firebase_url": "https://houserenting-a8f5e.firebaseio.com",
+    "project_id": "houserenting-a8f5e",
+    "storage_bucket": "houserenting-a8f5e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:479952031135:android:ad9171a5f3f59ec5e9c1aa",
+        "android_client_info": {
+          "package_name": "com.reuben.company.houserenting"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "479952031135-9m07ocu3272vqkujrupbv392llfvhekd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.reuben.company.houserenting",
+            "certificate_hash": "ea2c5379bf9d47cf83857505f4308612d1ffbe2e"
+          }
+        },
+        {
+          "client_id": "479952031135-ug68erk0spja79bsjo1ekcnq7uu7ub5o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHZNY6oXOZfj0jDvSSdkbk0JZOd_vYi-g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "479952031135-ug68erk0spja79bsjo1ekcnq7uu7ub5o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

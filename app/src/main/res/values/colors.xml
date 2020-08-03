@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--<color name="colorPrimary">#ffffff</color>-->
+    <color name="colorPrimary">#ff785b</color>
+    <color name="chipcolor">#2B2B2B</color>
+    <color name="colorPrimaryDark">#2B2B2B</color>
+    <color name="colorAccent">#ff785b</color>
+    <color name="black">#000000</color>
+    <color name="lightGray">#F2F2F2</color>
+    <color name="red">#FF0000</color>
+
+
+    <color name="disabledBtnBg">#999999</color>
+
+    <color name="colorGrey">#bfbfbf</color>
+    <color name="colorWhite">#FFF</color>
+    <color name="white">#FAF8F8</color>
+    <!-- colors for button style -->
+
+    <color name="gradient_start_color">#ff785b</color>
+    <color name="gradient_end_color">#ff785b</color>
+
+
+    <!-- colors for tab and screent text -->
+    <color name="tab_indicator_gray">#c0c0c0</color>
+    <color name="intro_title_color">#000000</color>
+    <color name="intro_description_color">#656565</color>
+
+    <!--Colors-->
+    <color name="color_start">#7E53E3</color>
+    <color name="color_end">#E35AC6</color>
+    <color name="color_org_start">#FFA500</color>
+    <color name="color_dim_org_end">#FDE475</color>
+    <color name="color_org_end">#FF4500</color>
+    <color name="otp_bg_clr">#E4E6E2</color>
+    <color name="color_green">#93E442</color>
+
+</resources>

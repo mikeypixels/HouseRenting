@@ -1,0 +1,153 @@
+apply plugin: 'com.android.application'
+//apply plugin: 'com.google.gms.google-services'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion '29.0.3'
+    defaultConfig {
+        applicationId "com.reuben.company.houserenting"
+        minSdkVersion 22
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    buildFeatures{
+        dataBinding = true
+        viewBinding = true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.navigation:navigation-fragment:2.2.2'
+    implementation 'androidx.navigation:navigation-ui:2.2.2'
+    implementation 'com.google.firebase:firebase-storage:19.1.1'
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'com.rengwuxian.materialedittext:library:2.1.4'
+    implementation 'uk.co.chrisjenx:calligraphy:2.3.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'com.google.android.material:material:1.1.0'
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
+    implementation 'com.google.firebase:firebase-core:17.4.3'
+    implementation 'com.google.firebase:firebase-auth:19.3.1'
+
+    //ChipNavigationBar
+    implementation 'com.ismaeldivita.chipnavigation:chip-navigation-bar:1.2.0'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.3.72'
+    implementation 'me.anwarshahriar:calligrapher:1.0'
+
+    //piccaso library
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.squareup.picasso:picasso:2.6.0-SNAPSHOT'
+
+    implementation 'com.firebaseui:firebase-ui-database:4.3.2'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    testImplementation 'junit:junit:4.13'
+    testImplementation 'junit:junit:4.13'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    //Library for EditText Animation
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+   // implementation 'com.google.firebase:firebase-analytics:17.4.3'
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+   implementation 'com.google.firebase:firebase-analytics:17.4.2'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    //Support design
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'com.github.d-max:spots-dialog:0.7@aar'
+
+    //Material Dialog
+    implementation 'com.github.d-max:spots-dialog:1.1@aar'
+
+    //Lottie Library
+    implementation 'com.airbnb.android:lottie:3.4.0'
+
+    //PinView
+    implementation 'com.chaos.view:pinview:1.4.3'
+    implementation 'com.mukesh:otpview:1.0.1'
+
+    //CircleImageView
+    implementation 'de.hdodenhof:circleimageview:2.\2.0'
+
+    implementation 'com.airbnb.android:lottie:2.7.0'
+    //implementation 'am.appwise.components:NoInternetDialog:1.1.3'
+
+    //Dialog
+    implementation 'com.github.f0ris.sweetalert:library:1.6.2'
+
+    //Country code picker
+    implementation 'com.hbb20:ccp:2.4.0'
+
+    //Support design
+   // implementation 'com.android.support:appcompat-v7:28.0.0'
+
+    //No Gradle inspection
+   // implementation 'com.android.support:design:28.0.0'
+    implementation 'com.google.android.material:material:1.0.0'
+
+    //Circle dependency
+    implementation 'com.shaishavgandhi:login-buttons:0.1.1'
+    implementation 'com.google.android.gms:play-services-auth:18.0.0'
+    implementation 'com.google.firebase:firebase-database:19.3.1'
+
+    //CircleImageView
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    implementation 'com.firebaseui:firebase-ui-database:0.4.0'
+    implementation 'com.firebaseui:firebase-ui-auth:2.4.0'
+
+    //Round CardView
+    implementation 'com.github.captain-miao:optroundcardview:1.0.0'
+
+    //MaterialComponents
+    implementation 'com.google.android.material:material:1.2.0-alpha02'
+
+
+    //view pager
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
+    //for rounded imageview
+    implementation 'com.makeramen:roundedimageview:2.3.0'
+
+    //library for image apload
+    implementation 'net.gotev:uploadservice:2.1'
+    implementation 'com.android.volley:volley:1.1.0'
+
+    //Glide Library
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+
+    //for google play services
+   // implementation 'com.google.android.gms:play-services:12.0.1'
+    //for gms
+   // implementation group: 'com.google.android.gms', name: 'play-services-gcm', version: '17.0.0'
+    //for google plus
+    implementation 'com.google.android.gms:play-services-plus:17.0.0'
+}
+
+//apply plugin: 'com.google.gms.google-services'
