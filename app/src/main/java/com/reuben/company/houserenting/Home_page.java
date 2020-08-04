@@ -1,8 +1,13 @@
 package com.reuben.company.houserenting;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -14,17 +19,20 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.maps.model.LatLng;
 import com.reuben.company.houserenting.R_Class.Datail_Adapter;
 import com.reuben.company.houserenting.R_Class.Renting_URL;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Home_page extends AppCompatActivity {
-private ListView recyclerView;
+    private ListView recyclerView;
+    public static LatLng houseLatLong;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,7 +99,34 @@ private ListView recyclerView;
         requestQueue.add(request);
     }
 
-
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+            alertDialog.setIcon(R.mipmap.ic_launcher);
+            alertDialog.setTitle("Confirm Logging Out..!");
+            alertDialog.setMessage("Are You Sure You Want To Return Home?");
+            alertDialog.setCancelable(false);
+            alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Intent intent = new Intent(Home_page.this,SiginAs.class);
+                    startActivity(intent);
+                }
+            });
+            alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            AlertDialog alertDialog1 = alertDialog.create();
+            alertDialog1.show();
+        }
+    }
 
 
 }

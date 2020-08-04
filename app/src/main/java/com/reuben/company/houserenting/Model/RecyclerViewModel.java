@@ -2,104 +2,99 @@ package com.reuben.company.houserenting.Model;
 
 public class RecyclerViewModel {
 
-    String imageURL; //This is for image
-    String imageLoc; //This is for price
-    String imageName; //This is for description
-    String imagePrice; //This is for Location
-    String houseRoom; //This is for price
-    String houseKitchen; //This is for description
-    String houseParking; //This is for Location
-    String contacts; //This is for Location
+    int id; //This is for image
+    String phone; //This is for price
+    String room; //This is for description
+    String location; //This is for Location
+    String price; //This is for price
+    String parking; //This is for description
+    String kitchen; //This is for Location
+    String descriptions; //This is for Location
 
 //    String bedroom; //This is for price
 //    String dinningroom; //This is for description
 //    String livingroom; //This is for Location
 
-    //Create Constructor
-    public RecyclerViewModel() {
-
-    }
-
-    public RecyclerViewModel(String imageURL, String imageLoc, String imageName,
-                             String imagePrice, String houseRoom, String houseKitchen,
-                             String houseParking, String contacts) {
-        this.imageURL = imageURL;
-        this.imageLoc = imageLoc;
-        this.imageName = imageName;
-        this.imagePrice = imagePrice;
-        this.houseRoom = houseRoom;
-        this.houseKitchen = houseKitchen;
-        this.houseParking = houseParking;
-        this.contacts = contacts;
+    public RecyclerViewModel(int id, String phone, String room,
+                             String location, String price, String parking,
+                             String kitchen, String descriptions) {
+        this.id = id;
+        this.phone = phone;
+        this.room = room;
+        this.location = location;
+        this.price = price;
+        this.parking = parking;
+        this.kitchen = kitchen;
+        this.descriptions = descriptions;
 //        this.bedroom = bedroom;
 //        this.dinningroom = dinningroom;
 //        this.livingroom = livingroom;
     }
 
     //This is the description
-    public String getImageName() {
-        return imageName;
+    public String getRoom() {
+        return room;
     }
-    public void setImageName(String imageName) {
-        this.imageName = imageName;
+    public void setRoom(String room) {
+        this.room = room;
     }
 
     //This is the picture
-    public String getImageURL() {
-        return imageURL;
+    public int getId() {
+        return id;
     }
 
-    public void setImageURL(String imageURL) {
-        this.imageURL = imageURL;
+    public void setId(int id) {
+        this.id = id;
     }
 
     //This is For location
-    public String getImageLoc() {
-        return imageLoc;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setImageLoc(String imageLoc) {
-        this.imageLoc = imageLoc;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     //This is for Location
-    public String getImagePrice() {
-        return imagePrice;
+    public String getLocation() {
+        return location;
     }
-    public void setImagePrice(String imagePrice) {
-        this.imagePrice = imagePrice;
-    }
-
-    public String getHouseRoom() {
-        return houseRoom;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
-    public void setHouseRoom(String houseRoom) {
-        this.houseRoom = houseRoom;
+    public String getPrice() {
+        return price;
     }
 
-    public String getHouseKitchen() {
-        return houseKitchen;
+    public void setPrice(String price) {
+        this.price = price;
     }
 
-    public void setHouseKitchen(String houseKitchen) {
-        this.houseKitchen = houseKitchen;
+    public String getParking() {
+        return parking;
     }
 
-    public String getHouseParking() {
-        return houseParking;
+    public void setParking(String parking) {
+        this.parking = parking;
     }
 
-    public void setHouseParking(String houseParking) {
-        this.houseParking = houseParking;
+    public String getKitchen() {
+        return kitchen;
     }
 
-    public String getContacts() {
-        return contacts;
+    public void setKitchen(String kitchen) {
+        this.kitchen = kitchen;
     }
 
-    public void setContacts(String contacts) {
-        this.contacts = contacts;
+    public String getDescriptions() {
+        return descriptions;
+    }
+
+    public void setDescriptions(String descriptions) {
+        this.descriptions = descriptions;
     }
 
     //    public String getBedroom() {

@@ -3,7 +3,10 @@ package com.reuben.company.houserenting;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -13,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.SearchView;
 import android.widget.Spinner;
@@ -31,22 +35,32 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.core.Context;
 import com.reuben.company.houserenting.Model.RecyclerAdapter;
 import com.reuben.company.houserenting.Model.RecyclerViewModel;
+import com.reuben.company.houserenting.R_Class.Datail_Adapter;
+import com.reuben.company.houserenting.R_Class.Renting_URL;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class NavDrawer extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -68,6 +82,7 @@ public class NavDrawer extends AppCompatActivity
     private ProgressBar mProgressCircle;
     private Spinner spinner;
     private Context mContext;
+    Bitmap bitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +97,8 @@ public class NavDrawer extends AppCompatActivity
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
+
+        get_house_det(Renting_URL.Get_house_det_URL);
 
         final ArrayList<String> priceRange = new ArrayList<>();
         priceRange.add("0 - 49,999 Tshs");
@@ -100,24 +117,25 @@ public class NavDrawer extends AppCompatActivity
                     }
                     if(priceRange.get(position).equals("0 - 49,999 Tshs")){
                         for(int i=0; i<messagesArraylist.size(); i++){
-                            if(Double.parseDouble(messagesArraylist.get(i).getHouseParking().replaceAll(",", "")) >= 0 && Double.parseDouble(messagesArraylist.get(i).getHouseParking().replaceAll(",", "")) < 50000){
+                            if(Double.parseDouble(messagesArraylist.get(i).getPrice().replaceAll(",", "")) >= 0 && Double.parseDouble(messagesArraylist.get(i).getPrice().replaceAll(",", "")) < 50000){
                                 messagesSubArraylist.add(messagesArraylist.get(i));
+                                System.out.println(",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,," + messagesSubArraylist.get(i).getPrice());
                             }
                         }
                     }else if(priceRange.get(position).equals("50,000 - 99,999 Tshs")){
                         for(int i=0; i<messagesArraylist.size(); i++){
-                            if(Double.parseDouble(messagesArraylist.get(i).getHouseParking().replaceAll(",", "")) >= 50000 && Double.parseDouble(messagesArraylist.get(i).getHouseParking().replaceAll(",", "")) < 100000){
+                            if(Double.parseDouble(messagesArraylist.get(i).getPrice().replaceAll(",", "")) >= 50000 && Double.parseDouble(messagesArraylist.get(i).getPrice().replaceAll(",", "")) < 100000){
                                 messagesSubArraylist.add(messagesArraylist.get(i));
                             }
                         }
-                    }else{
+                    }else if(priceRange.get(position).equals("100,000 - 200,000 Tshs")){
                         for(int i=0; i<messagesArraylist.size(); i++){
-                            if(Double.parseDouble(messagesArraylist.get(i).getHouseParking().replaceAll(",", "")) >= 100000 && Double.parseDouble(messagesArraylist.get(i).getHouseParking().replaceAll(",", "")) <= 200000){
+                            if(Double.parseDouble(messagesArraylist.get(i).getPrice().replaceAll(",", "")) >= 100000 && Double.parseDouble(messagesArraylist.get(i).getPrice().replaceAll(",", "")) <= 200000){
                                 messagesSubArraylist.add(messagesArraylist.get(i));
                             }
                         }
                     }
-                    recyclerAdapter = new RecyclerAdapter(mContext, messagesSubArraylist);
+                    recyclerAdapter = new RecyclerAdapter(NavDrawer.this, messagesSubArraylist);
                     recyclerView.setAdapter(recyclerAdapter);
                     recyclerAdapter.notifyDataSetChanged();
                 }else{
@@ -126,24 +144,24 @@ public class NavDrawer extends AppCompatActivity
                     }
                     if(priceRange.get(position).equals("0 - 49,999 Tshs")){
                         for(int i=0; i<messageslist.size(); i++){
-                            if(Double.parseDouble(messageslist.get(i).getHouseParking().replaceAll(",", "")) >= 0 && Double.parseDouble(messageslist.get(i).getHouseParking().replaceAll(",", "")) < 50000){
+                            if(Double.parseDouble(messageslist.get(i).getPrice().replaceAll(",", "")) >= 0 && Double.parseDouble(messageslist.get(i).getPrice().replaceAll(",", "")) < 50000){
                                 messagesSubArraylist.add(messageslist.get(i));
                             }
                         }
                     }else if(priceRange.get(position).equals("50,000 - 99,999 Tshs")){
                         for(int i=0; i<messageslist.size(); i++){
-                            if(Double.parseDouble(messagesArraylist.get(i).getHouseParking().replaceAll(",", "")) >= 50000 && Double.parseDouble(messagesArraylist.get(i).getHouseParking().replaceAll(",", "")) < 100000){
-                                messagesSubArraylist.add(messagesArraylist.get(i));
+                            if(Double.parseDouble(messageslist.get(i).getPrice().replaceAll(",", "")) >= 50000 && Double.parseDouble(messageslist.get(i).getPrice().replaceAll(",", "")) < 100000){
+                                messagesSubArraylist.add(messageslist.get(i));
                             }
                         }
-                    }else{
+                    }else if(priceRange.get(position).equals("100,000 - 200,000 Tshs")){
                         for(int i=0; i<messageslist.size(); i++){
-                            if(Double.parseDouble(messagesArraylist.get(i).getHouseParking().replaceAll(",", "")) >= 100000 && Double.parseDouble(messagesArraylist.get(i).getHouseParking().replaceAll(",", "")) <= 200000){
-                                messagesSubArraylist.add(messagesArraylist.get(i));
+                            if(Double.parseDouble(messageslist.get(i).getPrice().replaceAll(",", "")) >= 100000 && Double.parseDouble(messageslist.get(i).getPrice().replaceAll(",", "")) <= 200000){
+                                messagesSubArraylist.add(messageslist.get(i));
                             }
                         }
                     }
-                    recyclerAdapter = new RecyclerAdapter(mContext, messagesArraylist);
+                    recyclerAdapter = new RecyclerAdapter(NavDrawer.this, messagesSubArraylist);
                     recyclerView.setAdapter(recyclerAdapter);
                     recyclerAdapter.notifyDataSetChanged();
                 }
@@ -163,7 +181,7 @@ public class NavDrawer extends AppCompatActivity
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-        Toast.makeText(this, preferences.getString("phoneNumber", ""), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, preferences.getString("phoneNumber", ""), Toast.LENGTH_SHORT).show();
 
         //Clear ArrayList
         //learAll();
@@ -186,6 +204,71 @@ public class NavDrawer extends AppCompatActivity
         toggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.white));
 
 
+    }
+
+    public void get_house_det(final String URL) {
+        StringRequest request = new StringRequest(Request.Method.POST, URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+//                        Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
+                        String[] phone;
+                        String[] loc,roo,park,pric,kitch,dec,phon;
+                        int id[];
+                        try {
+                            JSONArray array = new JSONArray(response);
+                            loc = new String[array.length()];
+                            roo = new String[array.length()];
+//                            pas = new String[array.length()];
+                            dec = new String[array.length()];
+                            kitch = new String[array.length()];
+                            pric = new String[array.length()];
+                            park = new String[array.length()];
+                            phon = new String[array.length()];
+                            phone = new String[array.length()];
+                            id = new int[array.length()];
+                            JSONObject object = null;
+                            for (int i = 0; i < array.length(); i++) {
+                                object = array.getJSONObject(i);
+                                phone[i] = object.getString("phone");
+                                id[i] = object.getInt("id");
+                                roo[i] = object.getString("room");
+                                loc[i] = object.getString("location");
+                                pric[i] = object.getString("price");
+                                park[i] = object.getString("parking");
+                                kitch[i] = object.getString("kitchen");
+                                dec[i] = object.getString("descriptions");
+                                phon[i] = object.getString("phone");
+                                messageslist.add(new RecyclerViewModel(id[i], phone[i], roo[i], loc[i], pric[i], park[i], kitch[i], dec[i]));
+                                System.out.println("=======================================" + phone[i]);
+                            }
+
+                            recyclerAdapter = new RecyclerAdapter(NavDrawer.this, messageslist);
+                            recyclerView.setAdapter(recyclerAdapter);
+                            recyclerAdapter.notifyDataSetChanged();
+
+                            mProgressCircle.setVisibility(View.GONE);
+
+//                            Toast.makeText(getApplicationContext(),"phone"+phone[1], Toast.LENGTH_LONG).show();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+//                            Toast.makeText(getApplicationContext(),"on adapter"+ e.toString(), Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+//                Toast.makeText(getApplicationContext(), "Aploaded error on responce on getprod" + error.toString(), Toast.LENGTH_LONG).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(request);
     }
 
 //    private void GetDataFromFirebase() {
@@ -281,11 +364,11 @@ public class NavDrawer extends AppCompatActivity
             public boolean onQueryTextSubmit(String query) {
                 if(!messageslist.isEmpty()){
                     for(int i=0; i<messageslist.size(); i++){
-                        if(messageslist.get(i).getImageLoc().equals(query)){
+                        if(messageslist.get(i).getLocation().equals(query)){
                             messagesArraylist.add(messageslist.get(i));
                         }
                     }
-                    recyclerAdapter = new RecyclerAdapter(mContext, messagesArraylist);
+                    recyclerAdapter = new RecyclerAdapter(NavDrawer.this, messagesArraylist);
                     recyclerView.setAdapter(recyclerAdapter);
                     recyclerAdapter.notifyDataSetChanged();
                 }
@@ -296,11 +379,11 @@ public class NavDrawer extends AppCompatActivity
             public boolean onQueryTextChange(String newText) {
                 if(!messageslist.isEmpty()) {
                     for (int i = 0; i < messageslist.size(); i++) {
-                        if (messageslist.get(i).getImageLoc().equals(newText)) {
+                        if (messageslist.get(i).getLocation().equals(newText)) {
                             messagesArraylist.add(messageslist.get(i));
                         }
                     }
-                    recyclerAdapter = new RecyclerAdapter(mContext, messagesArraylist);
+                    recyclerAdapter = new RecyclerAdapter(NavDrawer.this, messagesArraylist);
                     recyclerView.setAdapter(recyclerAdapter);
                     recyclerAdapter.notifyDataSetChanged();
                 }
@@ -331,15 +414,15 @@ public class NavDrawer extends AppCompatActivity
                 startActivity(i);
                 break;
 
-            case R.id.request:
-                Intent intent = new Intent(NavDrawer.this, MakeRequest.class);
-                startActivity(intent);
-                break;
-
-            case R.id.myorder:
-                Intent in = new Intent(NavDrawer.this, MyOrders.class);
-                startActivity(in);
-                break;
+//            case R.id.request:
+//                Intent intent = new Intent(NavDrawer.this, MakeRequest.class);
+//                startActivity(intent);
+//                break;
+//
+//            case R.id.myorder:
+//                Intent in = new Intent(NavDrawer.this, MyOrders.class);
+//                startActivity(in);
+//                break;
 
             case R.id.share:
                 Intent shareintent = new Intent();

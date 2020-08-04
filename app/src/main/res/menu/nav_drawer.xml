@@ -11,5 +11,6 @@
         android:orderInCategory="100"
         app:showAsAction="always"
         android:icon="@android:drawable/ic_menu_search"
+        app:actionViewClass="android.widget.SearchView"
         android:title="@string/search_hint" />
 </menu>

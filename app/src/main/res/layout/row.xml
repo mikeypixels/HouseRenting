@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
+    android:id="@+id/card"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -22,7 +23,6 @@
             android:layout_height="235dp"
             android:scaleType="centerCrop"
             android:background="@drawable/bg_round"
-            android:src="@drawable/two"
             android:contentDescription="@string/c" />
 
         <RelativeLayout
@@ -32,8 +32,8 @@
 
             <TextView
                 android:id="@+id/rTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="200dp"
+                android:layout_height="28dp"
                 android:text="Location"
                 android:fontFamily="@font/apple"
                 android:textColor="#000"
@@ -52,7 +52,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Tsh "
-                    android:layout_toLeftOf="@+id/PriceTv"
+                    android:layout_toLeftOf="@+id/price"
                     android:fontFamily="@font/apple"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -71,7 +71,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=" /="
-                    android:layout_toRightOf="@+id/PriceTv"
+                    android:layout_toRightOf="@+id/price"
                     android:fontFamily="@font/apple"
                     android:textColor="@color/colorAccent"
                     android:textSize="20sp"

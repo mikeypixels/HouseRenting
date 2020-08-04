@@ -123,6 +123,7 @@ public class Upload extends AppCompatActivity{
     private StorageTask mUploadTask;
     LocationManager locationManager;
     private List<String> imgstore;
+    public static String location;
 
     AppLocationService appLocationService;
 
@@ -226,6 +227,7 @@ public class Upload extends AppCompatActivity{
                     locationAddress = null;
             }
             loc.setText(locationAddress);
+            System.out.println("99999999999999999999999" + locationAddress);
         }
     }
 
@@ -368,7 +370,7 @@ public class Upload extends AppCompatActivity{
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
+//                        Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
                         String details = "";
                         String name;
                         try {
@@ -455,7 +457,7 @@ public class Upload extends AppCompatActivity{
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
+
                         String details = "";
                         int id = 0;
                         try {
@@ -466,6 +468,7 @@ public class Upload extends AppCompatActivity{
                                 id = object.getInt("id") ;
                             }
                             upload_image(Renting_URL.House_Image_URL,id,imagename,imgstore,postion);
+                            Toast.makeText(getApplicationContext(), "Upload successfull!", Toast.LENGTH_LONG).show();
 
                         } catch (Exception e) {
                             e.printStackTrace();

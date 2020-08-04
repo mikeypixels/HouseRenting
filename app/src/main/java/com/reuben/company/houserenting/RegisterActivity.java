@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.MenuItem;
 import android.view.WindowManager;
 import android.widget.Toast;
@@ -14,9 +16,11 @@ import android.widget.Toast;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.ErrorCodes;
 import com.firebase.ui.auth.IdpResponse;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
@@ -29,13 +33,13 @@ public class RegisterActivity extends AppCompatActivity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
-
+        FirebaseApp.initializeApp(this);
         FirebaseAuth auth = FirebaseAuth.getInstance();
 
         //This is if the user is already login
         if (auth.getCurrentUser() != null) {
             if (!FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber().isEmpty()) {
-                startActivity(new Intent(this, NavDrawer.class)
+                startActivity(new Intent(this, Upload.class)
                         .putExtra("Phone", FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber().isEmpty())
                 );
                 finish();
@@ -46,6 +50,13 @@ public class RegisterActivity extends AppCompatActivity {
                             Arrays.asList(
                                     new AuthUI.IdpConfig.Builder(AuthUI.PHONE_VERIFICATION_PROVIDER).build()
                             )).build(), REQUEST_LOGIN);
+//            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(RegisterActivity.this);
+//
+//            SharedPreferences.Editor editor = preferences.edit();
+//
+//            editor.putString("phoneNumber", Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getPhoneNumber());
+//
+//            editor.apply();
         }
     }
 

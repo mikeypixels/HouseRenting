@@ -307,7 +307,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material/icons/materialicons/search/baseline_search_24.xml" />
+                                      <entry key="url" value="jar:file:/snap/android-studio/91/android-studio/plugins/android/lib/android.jar!/images/material/icons/materialicons/textsms/baseline_textsms_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -317,9 +317,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="673ab7" />
-                            <entry key="outputName" value="ic_baseline_search_24" />
-                            <entry key="sourceFile" value="J:\USIFUTE\HouseRenting" />
+                            <entry key="outputName" value="ic_baseline_textsms_24" />
+                            <entry key="sourceFile" value="$USER_HOME$/J:\USIFUTE\HouseRenting" />
                           </map>
                         </option>
                       </PersistentState>

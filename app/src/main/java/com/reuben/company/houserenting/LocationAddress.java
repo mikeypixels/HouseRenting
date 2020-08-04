@@ -44,7 +44,7 @@ public class LocationAddress {
                     if (result != null) {
                         message.what = 1;
                         Bundle bundle = new Bundle();
-                        result = "Address: " + result + " /" + latitude + "/" + longitude;
+                        result = "Address: " + "CIVE, Lecture theatre" + " /" + latitude + "/" + longitude;
                         bundle.putString("address", result);
                         message.setData(bundle);
                     } else {

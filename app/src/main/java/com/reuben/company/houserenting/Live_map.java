@@ -24,8 +24,10 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.reuben.company.houserenting.Model.RecyclerAdapter;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -42,6 +44,7 @@ public class Live_map extends AppCompatActivity implements OnMapReadyCallback {
     private Boolean map_permis_granted = false;
     private TextView search;
     private ImageView imageView;
+    private ArrayList<LatLng> arrayList = new ArrayList<>();
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -60,7 +63,6 @@ public class Live_map extends AppCompatActivity implements OnMapReadyCallback {
             gMap.setMyLocationEnabled(true);
             //to remove gps btm
             gMap.getUiSettings().setMyLocationButtonEnabled(false);
-            onsearch();
         }
     }
 
@@ -68,28 +70,26 @@ public class Live_map extends AppCompatActivity implements OnMapReadyCallback {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_live_map);
-        search = findViewById(R.id.txt_search);
         getlocation_permis();
-        onsearch();
     }
 
-   public void onsearch(){
-        search.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_SEARCH
-                        ||actionId == EditorInfo.IME_ACTION_DONE
-                        ||event.getAction() == event.ACTION_DOWN
-                        ||event.getAction() == event.KEYCODE_NUMPAD_ENTER){
-                    //code for search location
-                    geoLocation();
-                }
-                return false;
-            }
-        });
-   }
+//    public void onsearch(){
+//        search.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+//            @Override
+//            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+//                if (actionId == EditorInfo.IME_ACTION_SEARCH
+//                        ||actionId == EditorInfo.IME_ACTION_DONE
+//                        ||event.getAction() == event.ACTION_DOWN
+//                        ||event.getAction() == event.KEYCODE_NUMPAD_ENTER){
+//                    //code for search location
+//                    geoLocation();
+//                }
+//                return false;
+//            }
+//        });
+//    }
 
-   private void geoLocation(){
+    private void geoLocation(){
         String searchString  = search.getText().toString();
         Geocoder geocoder = new Geocoder(Live_map.this);
         List<Address> list = new ArrayList<>();
@@ -109,7 +109,7 @@ public class Live_map extends AppCompatActivity implements OnMapReadyCallback {
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         try {
             if (map_permis_granted){
-                 Task location = fusedLocationProviderClient.getLastLocation();
+                Task location = fusedLocationProviderClient.getLastLocation();
                 location.addOnCompleteListener(new OnCompleteListener() {
                     @Override
                     public void onComplete(@NonNull Task task) {
@@ -119,7 +119,17 @@ public class Live_map extends AppCompatActivity implements OnMapReadyCallback {
 
 //                            System.out.println("roja"+Objects.requireNonNull(task.getResult()).toString());
 
-                            moving_camera(new LatLng(current_loc.getLatitude(),current_loc.getLongitude()),DEFAUT_ZOOM);
+//                            moving_camera(new LatLng(current_loc.getLatitude(),current_loc.getLongitude()),DEFAUT_ZOOM);
+
+                            Bundle bundle = getIntent().getExtras();
+                            arrayList.add(new LatLng(current_loc.getLatitude(), current_loc.getLongitude()));
+                            arrayList.add(new LatLng(RecyclerAdapter.latLng.latitude, RecyclerAdapter.latLng.longitude));
+                            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + RecyclerAdapter.latLng.latitude + " " + RecyclerAdapter.latLng.longitude);
+                            gMap.addMarker(new MarkerOptions().position(arrayList.get(0)).title("Marker"));
+                            gMap.addMarker(new MarkerOptions().position(arrayList.get(1)).title("Marker2"));
+                            gMap.animateCamera(CameraUpdateFactory.zoomTo(15.0f));
+                            gMap.moveCamera(CameraUpdateFactory.newLatLng(arrayList.get(0)));
+                            gMap.moveCamera(CameraUpdateFactory.newLatLng(arrayList.get(1)));
 
                         }else {
                             Toast.makeText(Live_map.this,"Unable to get current Location",Toast.LENGTH_LONG).show();
@@ -150,42 +160,31 @@ public class Live_map extends AppCompatActivity implements OnMapReadyCallback {
     }
 
     private void setmap(){
-         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-         mapFragment.getMapAsync(Live_map.this);
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        mapFragment.getMapAsync(Live_map.this);
 
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-    map_permis_granted = false;
-    switch (requestCode){
-        case LOC_PERMIS_REQUEST_CODE:{
-            if (grantResults.length > 0){
-                for (int i = 0;i<grantResults.length;i++){
-                    if (grantResults[i] != PackageManager.PERMISSION_GRANTED){
-                        Toast.makeText(this,"Permission denied",Toast.LENGTH_LONG).show();
-                        map_permis_granted = false;
-                        return;
+        map_permis_granted = false;
+        switch (requestCode){
+            case LOC_PERMIS_REQUEST_CODE:{
+                if (grantResults.length > 0){
+                    for (int i = 0;i<grantResults.length;i++){
+                        if (grantResults[i] != PackageManager.PERMISSION_GRANTED){
+                            Toast.makeText(this,"Permission denied",Toast.LENGTH_LONG).show();
+                            map_permis_granted = false;
+                            return;
+                        }
                     }
+                    Toast.makeText(this,"Permission granted",Toast.LENGTH_LONG).show();
+                    map_permis_granted = true;
+                    //start map
+                    setmap();
                 }
-                Toast.makeText(this,"Permission granted",Toast.LENGTH_LONG).show();
-                map_permis_granted = true;
-                //start map
-                setmap();
             }
         }
     }
-    }
 
 }
-
-
-
-
-
-
-
-
-
-
-

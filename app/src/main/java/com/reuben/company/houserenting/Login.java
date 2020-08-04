@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.ErrorCodes;
 import com.firebase.ui.auth.IdpResponse;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.nio.channels.InterruptedByTimeoutException;
@@ -32,6 +33,7 @@ public class Login extends AppCompatActivity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
+        FirebaseApp.initializeApp(this);
         FirebaseAuth auth = FirebaseAuth.getInstance();
 
         //This is if the user is already login
@@ -48,13 +50,7 @@ public class Login extends AppCompatActivity {
                             Arrays.asList(
                                     new AuthUI.IdpConfig.Builder(AuthUI.PHONE_VERIFICATION_PROVIDER).build()
                             )).build(), REQUEST_LOGIN);
-            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(Login.this);
 
-            SharedPreferences.Editor editor = preferences.edit();
-
-            editor.putString("phoneNumber", Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getPhoneNumber());
-
-            editor.apply();
         }
     }
 

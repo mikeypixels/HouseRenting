@@ -6,49 +6,254 @@
     android:layout_height="match_parent"
     tools:context=".MyOrders">
 
-    <RelativeLayout
-        android:id="@+id/vcont"
+    <ImageView
+        android:id="@+id/img1"
         android:layout_width="match_parent"
-        android:layout_height="350dp">
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewpager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true">
+        android:layout_height="220dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/two"/>
+    <RelativeLayout
+        android:id="@+id/cont1"
+        android:layout_below="@id/cont2"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="9dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-        </androidx.viewpager.widget.ViewPager>
+
+        <!--//First layout is for rooms-->
+        <LinearLayout
+            android:id="@+id/room"
+            android:layout_alignParentLeft="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <ImageView
+                android:layout_marginLeft="10dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/room" />
+
+            <TextView
+                android:id="@+id/rum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="10dp"
+                android:textSize="14sp"
+                android:fontFamily="@font/apple"
+                android:text="1"
+                android:textColor="#000"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:textSize="14sp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/apple"
+                android:text="House Room"
+                android:textColor="#858585"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
+        <!--//Second layout is for Kitchen-->
+        <LinearLayout
+            android:id="@+id/kati"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/kitchen" />
+            <TextView
+                android:id="@+id/kicheni"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:textSize="14sp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/apple"
+                android:text="1"
+                android:textColor="#000"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/kitchen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:fontFamily="@font/apple"
+                android:textSize="14sp"
+                android:layout_marginTop="10dp"
+                android:text="Kitchen"
+                android:textColor="#858585"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
+        <!--//Third layout is for Parking-->
+        <LinearLayout
+            android:id="@+id/layoutParking"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/parking" />
+
+            <TextView
+                android:id="@+id/paking"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/apple"
+                android:text="1"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_marginRight="12dp"
+                android:id="@+id/parking"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:textSize="14sp"
+                android:fontFamily="@font/apple"
+                android:layout_marginTop="10dp"
+                android:text="Car Parking"
+                android:textColor="#858585"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/cont2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/img1"
+        android:layout_marginTop="3dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/Tsh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/PriceTv"
+                android:fontFamily="@font/apple"
+                android:text="Tsh "
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:fontFamily="@font/apple"
+                android:text="Price"
+                android:textColor="@color/colorAccent"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/slash"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/PriceTv"
+                android:fontFamily="@font/apple"
+                android:text=" /="
+                android:textColor="@color/colorAccent"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/rTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/apple"
+            android:text="Location"
+            android:textColor="#000"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/cont3"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        android:layout_below="@+id/cont1">
+
+        <Button
+            android:id="@+id/loc"
+            android:layout_width="50dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/location"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="-3dp" />
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/vwpger"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/loc"
+            android:layout_marginTop="5dp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_above="@id/renT"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="3dp">
+
+        <ImageView
+            android:onClick="phone_call"
+            android:layout_marginLeft="20dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/phone"
+            android:layout_centerInParent="true"/>
+<!--        <ImageView-->
+<!--            android:id="@+id/sendSms"-->
+<!--            android:onClick="send_sms"-->
+<!--            android:layout_alignParentRight="true"-->
+<!--            android:layout_marginRight="20dp"-->
+<!--            android:layout_width="30dp"-->
+<!--            android:layout_height="30dp"-->
+<!--            android:src="@drawable/ic_baseline_textsms_24"/>-->
 
     </RelativeLayout>
 
     <Button
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:hint="go to map"
-        android:id="@+id/map"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="5sp"/>
-
-
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:hint="Rent now"
-        android:id="@+id/home"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="5dp"/>
-
-
-
-
-<!--    <ImageView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="200dp"-->
-<!--        android:src="@drawable/person_focused"-->
-<!--        android:scaleType="fitXY"-->
-<!--        android:id="@+id/slideimg"/>-->
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/buttons"
+        android:text="RENT NOW"
+        android:id="@+id/renT"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        android:fontFamily="@font/apple"
+        android:layout_width="match_parent"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_height="50dp"/>
 
 </RelativeLayout>

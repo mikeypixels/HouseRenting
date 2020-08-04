@@ -244,36 +244,14 @@
 <!--    </LinearLayout>-->
 
     <EditText
-        android:id="@+id/coord"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_below="@id/footer"
-        android:layout_marginTop="7dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:autofillHints=""
-        android:background="@drawable/custom_input"
-        android:drawableStart="@drawable/coordinate"
-        android:drawablePadding="13dp"
-        android:hint="coordinates"
-        android:inputType="textEmailAddress"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
-        android:textColor="#0A0444"
-        android:textColorHint="#838383"
-        android:fontFamily="@font/apple"
-        android:textSize="14sp"
-        android:transitionName="edtEmail" />
-
-    <EditText
         android:id="@+id/phone"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:layout_below="@id/coord"
         android:layout_marginTop="7dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:background="@drawable/custom_input"
+        android:layout_below="@+id/footer"
         android:drawableStart="@drawable/phone"
         android:drawablePadding="13dp"
         android:hint="Owner Phone number"
@@ -313,7 +291,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="294dp"
-        android:layout_below="@+id/info"
+        android:layout_below="@+id/phone"
         android:orientation="vertical"
         android:paddingBottom="10dp">
 

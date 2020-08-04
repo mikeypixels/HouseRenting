@@ -110,7 +110,7 @@ public class SiginAs extends AppCompatActivity {
         user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SiginAs.this, NavDrawer.class);
+                Intent intent = new Intent(SiginAs.this, Login.class);
                 startActivity(intent);
                 finish();
             }
@@ -128,7 +128,7 @@ public class SiginAs extends AppCompatActivity {
         owner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SiginAs.this, Upload.class);
+                Intent intent = new Intent(SiginAs.this, RegisterActivity.class);
                 startActivity(intent);
                 finish();
             }

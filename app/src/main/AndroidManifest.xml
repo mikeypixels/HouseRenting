@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.reuben.company.houserenting">
 
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -30,7 +31,6 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".MyOrders"
-            android:label="House Orders"
             android:parentActivityName=".NavDrawer"
             android:screenOrientation="portrait" />
         <activity
@@ -57,7 +57,7 @@
         </activity>
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDrxubXAqetPWWOMQVd3XTRN5GJW52YOzA" />
+            android:value="AIzaSyBarwLhbxRb6IyoKPutbCU1yjnHkrdbmS8" />
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -68,6 +68,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
 
     <uses-permission android:name="android.permission.INTERNET" />
 
